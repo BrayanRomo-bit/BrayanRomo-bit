@@ -19,7 +19,7 @@
 
 ## 🚀 Sobre mí y Mi Enfoque
 
-Soy estudiante de Ingeniería en Informática. Mi enfoque de desarrollo se centra en la arquitectura modular orientada a objetos, el cumplimiento de buenas prácticas de programación y la eliminación del *hardcode* en cualquier solución. Construyo software funcional y escalable, abarcando desde aplicaciones de escritorio y plataformas web hasta sistemas de visión artificial y automatización. Actualmente mis proyectos se enfocan en:
+Soy estudiante de Ingeniería en Informática. Mi enfoque de desarrollo se centra en la arquitectura modular orientada a objetos. Construyo software funcional y escalable, abarcando desde aplicaciones de escritorio y plataformas web hasta sistemas de visión artificial y automatización. Actualmente mis proyectos se enfocan en:
 
 <p align="center">
   <img src="https://img.shields.io/badge/Visión_Artificial_%26_IA_Local-FF6F00?style=for-the-badge&logo=opencv&logoColor=white" alt="Visión Artificial e IA" />
