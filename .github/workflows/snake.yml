@@ -1,12 +1,9 @@
 name: Generar Snake Graph
 
 on:
-  # Se ejecuta automáticamente cada 12 horas
   schedule:
     - cron: "0 */12 * * *"
-  # Permite ejecutarlo manualmente desde la pestaña Actions
   workflow_dispatch:
-  # Se ejecuta cada vez que haces push a la rama main
   push:
     branches:
       - main
@@ -17,11 +14,11 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
     steps:
-      # 1. Genera los archivos SVG usando Platane/snk
-      - name: Generar animaciones SVG de contribuciones
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Generar animaciones SVG
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
@@ -29,11 +26,13 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      # 2. Sube los SVG generados a la rama 'output'
-      - name: Publicar archivos en la rama output
-        uses: crazy-max/ghaction-github-pages@v4
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Subir archivos a la rama output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan output
+          git rm -rf .
+          mv dist/*.svg .
+          git add *.svg
+          git commit -m "Actualizar snake graph"
+          git push -f origin output
